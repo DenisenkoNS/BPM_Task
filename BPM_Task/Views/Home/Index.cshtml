@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<BPM_Task.Models.Contact>
+
+@{
+	ViewBag.Title = "Contacts";
+}
+
+<table width="90%" align="center">
+	<tr>
+		<th>Name</th>
+		<th>Mobile phone</th>
+		<th>Dear</th>
+		<th>Job title</th>
+		<th>Bith date</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+<tr>
+	<td>@item.Name</td>
+	<td>@item.MobilePhone</td>
+	<td>@item.Dear</td>
+	<td>@item.JobTitle</td>
+	<td>@item.BirthDate</td>
+	<td>
+		@using (Html.BeginForm("Edit", "Home"))
+		{
+			@Html.Hidden("contactId", item.Id)
+			<input type="submit" value="Edit" />
+		}
+	</td>
+	<td>
+		@using (Html.BeginForm("Delete", "Home"))
+		{
+			@Html.Hidden("contactId", item.Id)
+			<input type="submit" value="Delete" />
+		}
+	</td>
+
+</tr>
+	}
+</table>
+<p >
+	@Html.ActionLink("Создать новый контакт", "Create")
+</p>

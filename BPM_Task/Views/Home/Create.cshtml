@@ -1,0 +1,42 @@
+﻿@model BPM_Task.Models.Contact
+
+@{
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Create new contact</h1>
+<div>
+	@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+	{
+		
+		<div>
+			<label>Name</label><br />
+			@Html.EditorFor(m => m.Name,new { htmlAttributes = new {  id = "qq" } })
+		</div>
+		<div>
+			<label>Moblie phone</label><br />
+			@Html.EditorFor(m => m.MobilePhone)
+		</div>
+		<div>
+			<label>Dear</label><br />
+			@Html.EditorFor(m => m.Dear)
+		</div>
+		<div>
+			<label>Job Title</label><br />
+			@Html.EditorFor(m => m.JobTitle)
+		</div>
+		<div>
+			<label>Birth date</label><br />
+			@Html.EditorFor(m => m.BirthDate)
+		</div>
+		<div>
+			@{ Model.Id = Guid.NewGuid(); }
+			@Html.HiddenFor(m => m.Id, "Value")
+			<input id="CreateClick"  type="submit"  value="Create"  />
+			
+		</div>
+		@Html.ActionLink("Back to contacts", "Index")
+	}
+</div>

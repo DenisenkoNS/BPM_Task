@@ -1,0 +1,40 @@
+﻿@model BPM_Task.Models.Contact
+
+@{
+	ViewBag.Title = "Edit";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+	<h1>Edit selected contact</h1>
+<div>
+	@using (Html.BeginForm("Save", "Home"))
+	{
+		
+		<div>
+			<label>Name</label><br />
+			@Html.EditorFor(m => m.Name)
+		</div>
+		<div>
+			<label>Moblie phone</label><br />
+			@Html.EditorFor(m => m.MobilePhone)
+		</div>
+		<div>
+			<label>Dear</label><br />
+			@Html.EditorFor(m => m.Dear)
+		</div>
+		<div>
+			<label>Job Title</label><br />
+			@Html.EditorFor(m => m.JobTitle)
+		</div>
+		<div>
+			<label>Birth date</label><br />
+			@Html.EditorFor(m => m.BirthDate)
+		</div>
+		<div>
+			
+			@Html.HiddenFor(m => m.Id, "Value")
+			<input type="submit" value="Edit" />
+		</div>
+		@Html.ActionLink("Back to contacts", "Index")
+	}
+</div>
